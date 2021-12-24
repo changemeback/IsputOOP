@@ -8,7 +8,6 @@ namespace ConsoleApp6
         static string manufacturer = "China";
         static int power = 65;
         static int count = 1;
-        void set_power(int new_power){}
         void lamp_show_info(){}
  
     }
@@ -18,25 +17,14 @@ namespace ConsoleApp6
         static string manufacturer = "China";
         static int sensitivity_min = 220;
         static int sensitivity_max = 240;
-        void set_sensitivity() { }
         void camera_show_info(){}
  
     }
-    class PhotoStudio : Lamp
+    class PhotoStudio : Lamp, Camera
     {
-        public void lamp_show_info()
+        public void get_info()
         {
-            Console.WriteLine("Тип: " + Lamp.type + "\nВиробник: " + Lamp.manufacturer + "\nПотужнiсть у люменах: " + Lamp.power + "СИ\nКiлькiсть освiтлювальних елементiв: " + Lamp.count);
-        }
-        public void camera_show_info()
-        {
-            Console.WriteLine("Тип: " + Camera.type + "\nВиробник: " + Camera.manufacturer + "\nСвiтлочутливiсть: " + Camera.sensitivity_min + "lux - " + Camera.sensitivity_max + "lux");
-        }
-        public void show_info()
-        {
-            lamp_show_info();
-            Console.WriteLine("\n");
-            camera_show_info();
+            return ("Тип: " + Lamp.type + "\nVurobnuk: " + Lamp.manufacturer + "\nPotyjnist` u lymenah: " + Lamp.power + "СИ\nK-t` osvitlyvalnuh elementiv: " + Lamp.count) + ("Tup: " + Camera.type + "\nVurobnuk: " + Camera.manufacturer + "\nSvitlochutluvist: " + Camera.sensitivity_min + "lux - " + Camera.sensitivity_max + "lux");
         }
     }
  
@@ -44,9 +32,8 @@ namespace ConsoleApp6
     {
         static void Main(string[] args)
         {
-            PhotoStudio ps = new PhotoStudio();
-            ps.show_info();
+            PhotoStudio photostudio = new PhotoStudio();
+            Console.WriteLine(photostudio.get_info());
         }
     }
 }
- 
